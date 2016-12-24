@@ -4,7 +4,7 @@ const App = require('./app/app');
 
 var onDomReady = function onDomReady() {
   window.app = new App();
-
+  document.querySelector('.app-container').appendChild(app.renderEngine.element);
   app.setup();
   app.run();
 };

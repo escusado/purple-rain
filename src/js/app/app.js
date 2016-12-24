@@ -1,8 +1,15 @@
 'use strict';
 
-module.exports = class {
-  init () {
+const ThreeEngine = require('../lib/ThreeEngine');
+
+module.exports = class App {
+  constructor () {
     console.log('App init');
+
+    //get the engine API
+    this.renderEngine = new ThreeEngine({
+      debugAxis : true
+    });
   }
 
   setup () {
