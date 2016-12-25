@@ -1,12 +1,9 @@
 'use strict';
 
-const NanoCustomEventSupport = require('../../../node_modules/nano-widget/lib/nano_custom_event_support');
 const THREE = require('../../../node_modules/three/build/three.min');
 
-module.exports = class ThreeEngine extends NanoCustomEventSupport {
+module.exports = class ThreeEngine {
   constructor(conf){
-    super(conf);
-
     Object.assign(this, conf);
 
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -15,8 +12,9 @@ module.exports = class ThreeEngine extends NanoCustomEventSupport {
       antialias:true,
       alpha: true
     });
-    // this.renderer.setClearColor(0x333333, 1);
+
     this.element = this.renderer.domElement;
+    this.scene.background = new THREE.Color(0x333333);
   };
 
   setup () {
@@ -25,12 +23,13 @@ module.exports = class ThreeEngine extends NanoCustomEventSupport {
       this.scene.add(this._buildAxes(3000));
     }
 
-    this.camera.position.z = 100;
-    this.camera.position.y = 100;
-    this.camera.position.x = 50;
+    this.camera.position.z = 10;
+    this.camera.position.y = 10;
+    this.camera.position.x = 5;
   }
 
   resize (newSize) {
+    console.log('Engine Resize...');
     this.camera.aspect = newSize.w / newSize.h;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(newSize.w, newSize.h);
@@ -45,12 +44,11 @@ module.exports = class ThreeEngine extends NanoCustomEventSupport {
 
     this.time = now;
 
-    this.dispatch('update', {
+    Dispatcher.dispatch('update', {
       data : updateData
     });
 
     this.renderer.render(this.scene, this.camera);
-
     requestAnimationFrame(this.update.bind(this));
   }
 
