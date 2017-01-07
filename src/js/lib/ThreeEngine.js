@@ -23,9 +23,11 @@ module.exports = class ThreeEngine {
       this.scene.add(this._buildAxes(3000));
     }
 
-    this.camera.position.z = 10;
-    this.camera.position.y = 10;
-    this.camera.position.x = 5;
+    this.camera.position.z = 100;
+    this.camera.position.y = 70;
+    this.camera.position.x = 50;
+
+    this.camera.lookAt(this.scene.position);
   }
 
   resize (newSize) {
