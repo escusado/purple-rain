@@ -7,12 +7,11 @@ module.exports = class Sphere {
 
     // const material = new THREE.MeshBasicMaterial({color: 0xfffff, wireframe: true});
     const material = new THREE.MeshPhongMaterial({
-      color: 0x00FFFF
+      color: 0x4080ff
     });
     this.mesh = new THREE.Mesh(this._getRandomGeometry(), material);
 
     this.mesh.castShadow = true;
-		// this.mesh.receiveShadow = true;
   }
 
   _getRandomGeometry () {

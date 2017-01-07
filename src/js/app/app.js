@@ -65,12 +65,14 @@ module.exports = class App {
 
     const lights = new THREE.Object3D();
 
-    //const light = new THREE.HemisphereLight( 0x0000ff, 0x00ff00, 0.6 );
-    // const ambient = new THREE.AmbientLight( 0x444444 );
-    // lights.add( ambient );
+    // const hemisphere = new THREE.HemisphereLight( 0x0000ff, 0x00ff00, 0.6 );
+    // lights.add( hemisphere );
+
+    // const ambient = new THREE.AmbientLight( 0x444444, 0.5 );
+    //lights.add( ambient );
 
     const spot = new THREE.SpotLight( 0xffffff, 1, 0, Math.PI / 2 );
-		spot.position.set( 0, 20, 0 );
+		spot.position.set( 0, 22, 0 );
 		spot.target.position.set( 0, 0, 0 );
 		spot.castShadow = true;
 		spot.shadow = new THREE.LightShadow( new THREE.PerspectiveCamera( 50, 1, 1200, 2500 ) );

@@ -2,7 +2,7 @@
 
 const THREE = require('../../../node_modules/three/build/three.min');
 
-module.exports = class Sphere {
+module.exports = class Plane {
   constructor () {
 
     const geometry = new THREE.PlaneBufferGeometry( 256, 256 );
