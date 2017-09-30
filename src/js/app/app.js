@@ -5,6 +5,7 @@ const ThreeEngine = require('../lib/ThreeEngine');
 const Sphere = require('./sphere');
 const Plane = require('./plane');
 const Box = require('./box');
+const Field = require('./field');
 
 module.exports = class App {
   constructor () {
@@ -41,6 +42,10 @@ module.exports = class App {
     this.box = new Box();
     this.box.mesh.position.y = 20;
     this.renderEngine.scene.add(this.box.mesh);
+
+    this.field = new Field();
+    this.field.mesh.position.y = 0;
+    this.renderEngine.scene.add(this.field.mesh);
   }
 
   run () {

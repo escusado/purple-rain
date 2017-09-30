@@ -18,7 +18,7 @@ module.exports = class ThreeEngine {
   };
 
   setup () {
-    this.time = 0;
+    this.time = new Date().getTime();
     if(this.debugAxis){
       this.scene.add(this._buildAxes(3000));
     }
@@ -41,10 +41,10 @@ module.exports = class ThreeEngine {
     let now = new Date().getTime(),
         updateData = {
             now: now,
-            delta: now - (this.time || now)
+            delta: now - this.time
         };
 
-    this.time = now;
+    // this.time = now;
 
     Dispatcher.dispatch('update', {
       data : updateData
